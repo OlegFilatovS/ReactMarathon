@@ -1,15 +1,16 @@
-import React from 'react';
+import * as React from 'react';
 import s from './App.modules.scss';
 import './custom.css';
 import cn from 'classnames';
 
-const App = () => {
+interface Props {
+    title : string;
+    }
+
+export const App = ({ title = "Some Cool Title!" }: Props) => {
     return (
         <div className={cn(s.header,'color')}>
-            This is App Component!
+            {title}
         </div>
     )
 }
-
-
-export default App;
