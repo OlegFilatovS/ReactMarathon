@@ -1,13 +1,13 @@
 const path = require('path');
 const HTMLWebpackPlugins = require('html-webpack-plugin');
 
-const NODE_ENV = process.env.NODE_ENV;
+const { NODE_ENV } = process.env;
 
 module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
   },
-  mode: NODE_ENV ? NODE_ENV : 'development',
+  mode: NODE_ENV || 'development',
   entry: path.resolve(__dirname, 'src/index.ts'),
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -21,9 +21,21 @@ module.exports = {
         use: ['ts-loader'],
       },
       {
+        test: /\.(png|jpg|gif|svg)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
+      },
+      {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
+
       {
         test: /\.scss$/,
         use: [
@@ -37,6 +49,12 @@ module.exports = {
                 localIdentName: '[name]__[local]__[hash:base64:5]',
                 auto: /\.module\.\w+$/i,
               },
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true,
             },
           },
         ],
