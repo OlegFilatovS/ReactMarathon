@@ -1,21 +1,28 @@
 import * as React from 'react';
 import './styles/style.scss';
-import { Switch,Route,Router } from 'react-router-dom'
-import { createBrowserHistory } from 'history';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
 import HomePage from './Pages/HomePage';
 import Pokedex from './Pages/Pokedex/Pokedex';
-
-export const history = createBrowserHistory();
-
+import Layout from './components/Layout';
+import Header from './components/Header/Header';
 
 const App = () => {
   return (
-    <Router history={history}>
-    <Switch>
-      <Route exact path="/" component={HomePage}/>
-      <Route exact path="/pokedex" component={Pokedex}/>
-    </Switch>
-    </Router>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route
+          render={() => (
+            <>
+              <Header />
+              <Layout>
+                <Route exact path="/pokedex" component={Pokedex} />
+              </Layout>
+            </>
+          )}
+        />
+      </Switch>
+    </BrowserRouter>
   );
 };
 
