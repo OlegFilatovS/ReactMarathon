@@ -12,4 +12,6 @@ body {
   font-family: 'Karla', 'Arial', sans-serif;
   overflow-wrap: break-word;
   word-wrap: break-word;
+  max-width: 100%;
+  overflow-x: hidden;
 }
