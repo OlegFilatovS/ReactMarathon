@@ -1,12 +1,17 @@
 import * as React from 'react';
 import s from './Header.module.scss';
-import logo from '../../assets/img/pokemon-logo.svg';
+import {ReactComponent as PokemonLogoSvg} from './assets/img/pokemon-logo.svg';
 import Menu from './Menu/Menu';
 
 const Header = () => (
   <div className={s.container}>
-    <img src={logo} className={s.logo} alt="pokemon_logo" />
-    <Menu menuElements={['Home', 'Pokédex', 'Legendaries', 'Documentation']} />
+    <PokemonLogoSvg className={s.logo}/>
+    <Menu menuElements={[
+        { value: 'Home',link: '#' },
+        { value: 'Pokédex',link: '#' },
+        { value: 'Legendaries',link: '#' },
+        { value: 'Documentation',link: '#' }
+       ]}/>
   </div>
 );
 

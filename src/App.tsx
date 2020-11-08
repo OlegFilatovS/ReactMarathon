@@ -1,20 +1,21 @@
 import * as React from 'react';
 import './styles/style.scss';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import Content from './components/Content/Content';
+import { Switch,Route,Router } from 'react-router-dom'
+import { createBrowserHistory } from 'history';
+import HomePage from './Pages/HomePage';
+import Pokedex from './Pages/Pokedex/Pokedex';
 
-interface Props {
-  title: string;
-}
+export const history = createBrowserHistory();
 
-const App = ({ title = 'Some Cool Title!' }: Props) => {
+
+const App = () => {
   return (
-    <>
-      <Header />
-      <Content />
-      <Footer />
-    </>
+    <Router history={history}>
+    <Switch>
+      <Route exact path="/" component={HomePage}/>
+      <Route exact path="/pokedex" component={Pokedex}/>
+    </Switch>
+    </Router>
   );
 };
 
