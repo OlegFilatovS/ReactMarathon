@@ -2,14 +2,14 @@ import * as React from 'react';
 import s from '../Header.module.scss';
 
 interface Props {
-  menuElements: Array<string>;
+  menuElements: Array<{value: string, link: string}>;
 }
 
 const Menu = ({ menuElements }: Props) => {
-  const menuList = menuElements.map((el) => (
-    <div key={el} className={s.menuElement}>
-      <a href="/" className={s.menuLink}>
-        {el}
+  const menuList = menuElements.map(({value,link}) => (
+    <div key={value} className={s.menuElement}>
+      <a href={link} className={s.menuLink}>
+        {value}
       </a>
     </div>
   ));
