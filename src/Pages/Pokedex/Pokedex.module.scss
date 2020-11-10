@@ -3,3 +3,16 @@
 .root {
   min-height: 100vh;
 }
+
+.contentWrap {
+  height: 80vh;
+  display: flex;
+  padding: 100px;
+}
+
+.cardsWrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 400px);
+  justify-items: center;
+  align-items: center;
+}
