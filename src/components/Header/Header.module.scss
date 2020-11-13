@@ -62,3 +62,15 @@
     }
   }
 }
+
+.activeLink {
+  &::after {
+    content: '';
+    height: 2px;
+    background-color: black;
+    display: block;
+    margin-top: 10px;
+    opacity: 1;
+    width: 100%;
+  }
+}
