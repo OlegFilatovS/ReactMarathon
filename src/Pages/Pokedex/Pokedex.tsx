@@ -33,7 +33,11 @@ const usePokemons = () => {
 };
 
 const Pokedex = () => {
-  const { data, isLoading, isError } = usePokemons();
+  const {
+    data: { total, pokemons },
+    isLoading,
+    isError,
+  } = usePokemons();
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -46,9 +50,11 @@ const Pokedex = () => {
   return (
     <div className={s.root}>
       <Layout className={s.contentWrap}>
-        <div className={s.title}>{data.total} for you to choose your favorite</div>
+        <div className={s.title}>
+          {total} <span className={s.titleHeavy}>Pokemons</span> for you to choose your favorite
+        </div>
         <div className={s.cardsWrapper}>
-          {data.pokemons.map((pokemon) => (
+          {pokemons.map((pokemon) => (
             <PokemonCard
               pokemonName={pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
               attackValue={pokemon.stats.attack}
