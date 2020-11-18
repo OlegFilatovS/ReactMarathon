@@ -4,6 +4,8 @@ interface CssExports {
   'cardsWrapper': string;
   'contentWrap': string;
   'root': string;
+  'title': string;
+  'titleHeavy': string;
 }
 export const cssExports: CssExports;
 export default cssExports;
